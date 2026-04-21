@@ -45,27 +45,25 @@ jobs:
 
       - name: Case 03 - semua buka
         id: case-03
-        uses: classroom-resources/autograding-io-grader@v1
+        uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: Case 03 - semua buka
           setup-command: gcc -std=c11 -O2 -Wall -Wextra -o soal1 soal1.c
-          command: ./soal1
-          input: "((("
-          expected-output: ""
-          comparison-method: exact
+          command: |
+            output=$(printf "(((" | ./soal1)
+            [ -z "$output" ]
           timeout: 2
           max-score: 10
 
       - name: Case 04 - semua tutup
         id: case-04
-        uses: classroom-resources/autograding-io-grader@v1
+        uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: Case 04 - semua tutup
           setup-command: gcc -std=c11 -O2 -Wall -Wextra -o soal1 soal1.c
-          command: ./soal1
-          input: ")))"
-          expected-output: ""
-          comparison-method: exact
+          command: |
+            output=$(printf ")))" | ./soal1)
+            [ -z "$output" ]
           timeout: 2
           max-score: 10
 
